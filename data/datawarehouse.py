@@ -15,7 +15,7 @@ def createSQLFile():
         s_name = s.name
         var_stored = True
 
-        if s_name.rfind('listings.csv detail v4') != -1:
+        if s_name.rfind('listings.csv detail v4.3') != -1:
             variable_dict['listings'] = s
 
         elif s_name.rfind('reviews.csv v1') != -1:
@@ -103,9 +103,6 @@ CREATE TABLE calendar(
     
 
 def storeListings():
-    pass
-
-def storeListings_2():
     pass
 
 def storeReviews():

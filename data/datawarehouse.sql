@@ -5,6 +5,7 @@ CREATE TABLE listings(
     listing_url text,
     scrape_id bigint,
     last_scraped datetime,
+    source text,
     name text,
     description text,
     neighborhood_overview text,
@@ -73,8 +74,7 @@ CREATE TABLE listings(
     calculated_host_listings_count integer,
     calculated_host_listings_count_entire_homes integer,
     calculated_host_listings_count_private_rooms integer,
-    calculated_host_listings_count_shared_rooms integer,
-    reviews_per_month integer
+    calculated_host_listings_count_shared_rooms integer
 );
 
 -- Table: reviews
