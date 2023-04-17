@@ -1,6 +1,7 @@
 import xlrd
 import os
 import sqlite3
+import csv
 import pandas as pd
 
 def createSQLFile():
@@ -15,7 +16,7 @@ def createSQLFile():
         s_name = s.name
         var_stored = True
 
-        if s_name.rfind('listings.csv detail v4.3') != -1:
+        if s_name.rfind('listings.csv detail v4') != -1:
             variable_dict['listings'] = s
 
         elif s_name.rfind('reviews.csv v1') != -1:
@@ -100,10 +101,48 @@ CREATE TABLE calendar(
     text_file = open("datawarehouse.sql", "w")
     n = text_file.write(out)
     text_file.close()
-    
 
-def storeListings():
-    pass
+def createDatabaseFile():
+    con = sqlite3.connect('datawarehouse.db')
+    with open('datawarehouse.sql', 'r') as f:
+        sql_script = f.read()
+        con.executescript(sql_script)
+    con.close()
+    
+def bulkStoreListings():
+    listings_csv_list = []
+    fnames = ['2023_q1', '2022_q4', '2022_q3', '2022_q2']
+    for f in fnames:
+        temp_listings = f'./primary/{f}/listings.csv'
+        storeListings(temp_listings)
+
+def storeListings(csv_path):
+    database_path = './datawarehouse.db'
+    con = sqlite3.connect(database_path)
+    cur = con.cursor()
+    
+    
+    query = 'INSERT INTO listings VALUES (?, ?, ..., ?)'
+    with open(csv_path, 'r') as f:
+        reader = csv.reader(f)
+        next(reader)
+        for row in reader:
+            listing_values = row
+            num_vals = len(listing_values)
+            if num_vals == 75:
+                del listing_values[4]
+                num_vals = 74
+                
+            query_str = '?, '* (num_vals-1) + '?'
+            query = f'''INSERT INTO listings VALUES ({query_str})'''
+            try:
+                cur.execute(query, listing_values)
+            except sqlite3.IntegrityError:
+                continue
+    
+    f.close()
+    con.commit()
+    con.close()
 
 def storeReviews():
     pass
@@ -113,3 +152,5 @@ def storeCalendar():
 
 if __name__ == "__main__":
     createSQLFile()
+    createDatabaseFile()
+    bulkStoreListings()
