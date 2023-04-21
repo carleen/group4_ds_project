@@ -24,6 +24,9 @@ def createSQLFile():
 
         elif s_name.rfind('calendar.csv v2') != -1:
             variable_dict['calendar'] = s
+        
+        elif s_name.rfind('weather.csv v1') != -1:
+            variable_dict['weather'] = s
 
         else:
             var_stored = False
@@ -75,7 +78,7 @@ CREATE TABLE reviews(
     out+=f'''    {field_vals[len(field_vals)-1]} {var_type}
 );\n\n'''
     
-    # Automatically create the reviews table
+    # Automatically create the calendar table
     cur_sheet = variable_dict['calendar']
     field_vals = cur_sheet.col_values(0)[8:15]
     type_vals = cur_sheet.col_values(1)[8:15]
@@ -85,6 +88,30 @@ DROP TABLE IF EXISTS calendar;
 CREATE TABLE calendar(
     id int PRIMARY KEY,
     listing_id int,\n'''
+
+    for val in range (1, len(field_vals)-1):
+        var_type = type_vals[val]
+        if var_type == 'boolean [t=true; f=false]':
+            var_type = 'boolean'
+        if var_type == '':
+            var_type = 'blob'
+        out+=f'''    {field_vals[val]} {var_type},\n'''
+    
+    out+=f'''    {field_vals[len(field_vals)-1]} {var_type}
+);\n\n'''
+
+    # Automatically create the weather table
+
+    cur_sheet = variable_dict['weather']
+    field_vals = cur_sheet.col_values(0)[8:40]
+    type_vals = cur_sheet.col_values(1)[8:40]
+
+    out += f'''-- Table: weather
+DROP TABLE IF EXISTS weather;
+CREATE TABLE weather(
+    id int PRIMARY KEY,
+    datetime datetime,
+    FOREIGN KEY (datetime) REFERENCES calendar(date),\n'''
 
     for val in range (1, len(field_vals)-1):
         var_type = type_vals[val]
@@ -115,6 +142,8 @@ def bulkStoreListings():
     for f in fnames:
         temp_listings = f'./primary/{f}/listings.csv'
         storeListings(temp_listings)
+    weather_listing = f'./secondary/weather.csv'
+    storeweather(weather_listing)
 
 def storeListings(csv_path):
     database_path = './datawarehouse.db'
@@ -143,6 +172,11 @@ def storeListings(csv_path):
     f.close()
     con.commit()
     con.close()
+
+def storeweather(csv_path):
+    database_path = './datawarehouse.db'
+    con = sqlite3.connect(database_path)
+    cur = con.cursor()
 
 def storeReviews():
     pass
