@@ -106,7 +106,6 @@ DROP TABLE IF EXISTS weather;
 CREATE TABLE weather(
     id int PRIMARY KEY,
     datetime datetime,
-    FOREIGN KEY (datetime) REFERENCES calendar(date),
     tempmax numeric,
     tempmin  numeric,
     tempday  numeric,

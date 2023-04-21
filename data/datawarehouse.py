@@ -109,8 +109,7 @@ CREATE TABLE calendar(
 DROP TABLE IF EXISTS weather;
 CREATE TABLE weather(
     id int PRIMARY KEY,
-    datetime datetime,
-    FOREIGN KEY (datetime) REFERENCES calendar(date),\n'''
+    datetime datetime,\n'''
     for val in range (2, len(field_vals)-1):
         var_type = type_vals[val]
         if var_type == 'boolean [t=true; f=false]':
@@ -141,7 +140,7 @@ def bulkStoreListings():
         temp_listings = f'./primary/{f}/listings.csv'
         storeListings(temp_listings)
     weather_listing = f'./secondary/weather.csv'
-    storeweather(weather_listing)
+    storeWeather(weather_listing)
 
 def storeListings(csv_path):
     database_path = './datawarehouse.db'
@@ -171,7 +170,7 @@ def storeListings(csv_path):
     con.commit()
     con.close()
 
-def storeweather(csv_path):
+def storeWeather(csv_path):
     database_path = './datawarehouse.db'
     con = sqlite3.connect(database_path)
     cur = con.cursor()
