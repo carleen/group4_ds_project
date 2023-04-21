@@ -101,3 +101,41 @@ CREATE TABLE calendar(
     maximum_nights integer
 );
 
+-- Table: weather
+DROP TABLE IF EXISTS weather;
+CREATE TABLE weather(
+    id int PRIMARY KEY,
+    datetime datetime,
+    FOREIGN KEY (datetime) REFERENCES calendar(date),
+    tempmax float,
+    tempmin  float,
+    temp  float,
+    feelslikemax float,
+    feelslikemin float,
+    dew float,
+    humidity float,
+    precip float,
+    precipprob float,
+    precipcover float,
+    preciptype  float,
+    snow float,
+    snowdepth float,
+    winggust float,
+    windspeed float,
+    winddir float,
+    sealevelpressure float,
+    cloudcover float,
+    visibility  float,
+    solarradition float,
+    solarenergy float,
+    uvindex float,
+    severerisk float,
+    sunrise datetime,
+    sunset datetime,
+    moonphase float,
+    conditions text,
+    description text,
+    icon text,
+    stations text
+);
+

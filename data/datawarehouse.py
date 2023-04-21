@@ -96,7 +96,6 @@ CREATE TABLE calendar(
         if var_type == '':
             var_type = 'blob'
         out+=f'''    {field_vals[val]} {var_type},\n'''
-    
     out+=f'''    {field_vals[len(field_vals)-1]} {var_type}
 );\n\n'''
 
@@ -112,15 +111,14 @@ CREATE TABLE weather(
     id int PRIMARY KEY,
     datetime datetime,
     FOREIGN KEY (datetime) REFERENCES calendar(date),\n'''
-
-    for val in range (1, len(field_vals)-1):
+    for val in range (2, len(field_vals)-1):
         var_type = type_vals[val]
         if var_type == 'boolean [t=true; f=false]':
             var_type = 'boolean'
         if var_type == '':
             var_type = 'blob'
         out+=f'''    {field_vals[val]} {var_type},\n'''
-    
+    #out+= f'''\n\nFOREIGN KEY (datetime) REFERENCES calendar(date),\n'''
     out+=f'''    {field_vals[len(field_vals)-1]} {var_type}
 );\n\n'''
     
@@ -177,6 +175,23 @@ def storeweather(csv_path):
     database_path = './datawarehouse.db'
     con = sqlite3.connect(database_path)
     cur = con.cursor()
+
+    query = 'INSERT INTO weather VALUES (?, ?, ..., ?)'
+    with open(csv_path, 'r') as f:
+        reader = csv.reader(f)
+        next(reader)
+        for row in reader:
+            listing_values = row
+            num_vals = len(listing_values)
+            query_str = '?, '* (num_vals-1) + '?'
+            query = f'''INSERT INTO weather VALUES ({query_str})'''
+            try:
+                cur.execute(query, listing_values)
+            except sqlite3.IntegrityError:
+                continue
+    f.close()
+    con.commit()
+    con.close()
 
 def storeReviews():
     pass
