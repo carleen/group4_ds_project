@@ -91,7 +91,6 @@ CREATE TABLE reviews(
 -- Table: calendar
 DROP TABLE IF EXISTS calendar;
 CREATE TABLE calendar(
-    id int PRIMARY KEY,
     listing_id int,
     date datetime,
     available boolean,

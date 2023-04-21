@@ -86,7 +86,6 @@ CREATE TABLE reviews(
     out += f'''-- Table: calendar
 DROP TABLE IF EXISTS calendar;
 CREATE TABLE calendar(
-    id int PRIMARY KEY,
     listing_id int,\n'''
 
     for val in range (1, len(field_vals)-1):
@@ -138,7 +137,11 @@ def bulkStoreListings():
     fnames = ['2023_q1', '2022_q4', '2022_q3', '2022_q2']
     for f in fnames:
         temp_listings = f'./primary/{f}/listings.csv'
+        temp_reviews = f'./primary/{f}/reviews-2.csv'
+        temp_calendar = f'./primary/{f}/calendar.csv'
         storeListings(temp_listings)
+        storeReviews(temp_reviews)
+        storeCalendar(temp_calendar)
     weather_listing = f'./secondary/weather.csv'
     storeWeather(weather_listing)
 
@@ -192,13 +195,52 @@ def storeWeather(csv_path):
     con.commit()
     con.close()
 
-def storeReviews():
-    pass
+def storeReviews(csv_path):
+    database_path = './datawarehouse.db'
+    con = sqlite3.connect(database_path)
+    cur = con.cursor()
 
-def storeCalendar():
-    pass
+    query = 'INSERT INTO reveiws VALUES (?, ?, ..., ?)'
+    with open(csv_path, 'r') as f:
+        reader = csv.reader(f)
+        next(reader)
+        for row in reader:
+            listing_values = row
+            num_vals = len(listing_values)
+            query_str = '?, '* (num_vals-1) + '?'
+            query = f'''INSERT INTO reviews VALUES ({query_str})'''
+            try:
+                cur.execute(query, listing_values)
+            except sqlite3.IntegrityError:
+                continue
+    f.close()
+    con.commit()
+    con.close()
+
+def storeCalendar(csv_path):
+    database_path = './datawarehouse.db'
+    con = sqlite3.connect(database_path)
+    cur = con.cursor()
+
+    query = 'INSERT INTO calendar VALUES (?, ?, ..., ?)'
+    with open(csv_path, 'r') as f:
+        reader = csv.reader(f)
+        next(reader)
+        for row in reader:
+            listing_values = row
+            num_vals = len(listing_values)
+            query_str = '?, '* (num_vals-1) + '?'
+            query = f'''INSERT INTO calendar VALUES ({query_str})'''
+            try:
+                cur.execute(query, listing_values)
+            except sqlite3.IntegrityError:
+                continue
+    f.close()
+    con.commit()
+    con.close()
 
 if __name__ == "__main__":
     createSQLFile()
     createDatabaseFile()
     bulkStoreListings()
+
