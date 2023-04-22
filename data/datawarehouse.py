@@ -108,7 +108,7 @@ CREATE TABLE calendar(
 DROP TABLE IF EXISTS weather;
 CREATE TABLE weather(
     id int PRIMARY KEY,
-    datetime datetime,\n'''
+    weatherdate datetime,\n'''
     for val in range (2, len(field_vals)-1):
         var_type = type_vals[val]
         if var_type == 'boolean [t=true; f=false]':
@@ -116,14 +116,15 @@ CREATE TABLE weather(
         if var_type == '':
             var_type = 'blob'
         out+=f'''    {field_vals[val]} {var_type},\n'''
-    #out+= f'''\n\nFOREIGN KEY (datetime) REFERENCES calendar(date),\n'''
     out+=f'''    {field_vals[len(field_vals)-1]} {var_type}
 );\n\n'''
+
     
     print('Writing datawarehouse.sql file...')
     text_file = open("datawarehouse.sql", "w")
     n = text_file.write(out)
     text_file.close()
+
 
 def createDatabaseFile():
     con = sqlite3.connect('datawarehouse.db')
@@ -239,8 +240,30 @@ def storeCalendar(csv_path):
     con.commit()
     con.close()
 
+def joinWeatherCalendar():
+    # Join the weather and calendar tables
+    print('Creating joined weather/calendar table...')
+    database_path = './datawarehouse.db'
+    con = sqlite3.connect(database_path)
+    cur = con.cursor()
+    
+    query = '''DROP TABLE if EXISTS calendar_weather;'''
+    cur.execute(query)
+    con.commit()
+
+    query =f'''CREATE TABLE calendar_weather AS
+SELECT *
+FROM weather
+JOIN calendar
+ON DATE(weather.weatherdate) = DATE(calendar.date);'''
+    cur.execute(query)
+    con.commit()
+
+    con.close()
+
 if __name__ == "__main__":
     createSQLFile()
     createDatabaseFile()
     bulkStoreListings()
+    #joinWeatherCalendar()
 

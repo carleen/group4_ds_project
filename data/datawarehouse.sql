@@ -104,7 +104,7 @@ CREATE TABLE calendar(
 DROP TABLE IF EXISTS weather;
 CREATE TABLE weather(
     id int PRIMARY KEY,
-    datetime datetime,
+    weatherdate datetime,
     tempmax numeric,
     tempmin  numeric,
     tempday  numeric,
