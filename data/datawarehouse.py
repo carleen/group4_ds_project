@@ -101,8 +101,8 @@ CREATE TABLE calendar(
     # Automatically create the weather table
 
     cur_sheet = variable_dict['weather']
-    field_vals = cur_sheet.col_values(0)[8:40]
-    type_vals = cur_sheet.col_values(1)[8:40]
+    field_vals = cur_sheet.col_values(0)[8:41]
+    type_vals = cur_sheet.col_values(1)[8:41]
 
     out += f'''-- Table: weather
 DROP TABLE IF EXISTS weather;

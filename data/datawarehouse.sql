@@ -134,6 +134,7 @@ CREATE TABLE weather(
     conditions text,
     description text,
     icon text,
-    stations text
+    stations text,
+     text
 );
 
