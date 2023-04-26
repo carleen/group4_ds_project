@@ -135,7 +135,8 @@ def createDatabaseFile():
     
 def bulkStoreListings():
     listings_csv_list = []
-    fnames = ['2023_q1', '2022_q4', '2022_q3', '2022_q2']
+    #fnames = ['2023_q1', '2022_q4', '2022_q3', '2022_q2']
+    fnames = ['2022_q3']
     for f in fnames:
         temp_listings = f'./primary/{f}/listings.csv'
         temp_reviews = f'./primary/{f}/reviews-2.csv'
@@ -222,6 +223,8 @@ def storeCalendar(csv_path):
     database_path = './datawarehouse.db'
     con = sqlite3.connect(database_path)
     cur = con.cursor()
+    
+    print(csv_path)
 
     query = 'INSERT INTO calendar VALUES (?, ?, ..., ?)'
     with open(csv_path, 'r') as f:
@@ -232,10 +235,13 @@ def storeCalendar(csv_path):
             num_vals = len(listing_values)
             query_str = '?, '* (num_vals-1) + '?'
             query = f'''INSERT INTO calendar VALUES ({query_str})'''
+            cur.execute(query, listing_values)
+            '''
             try:
                 cur.execute(query, listing_values)
             except sqlite3.IntegrityError:
                 continue
+            '''
     f.close()
     con.commit()
     con.close()
@@ -253,9 +259,10 @@ def joinWeatherCalendar():
 
     query =f'''CREATE TABLE calendar_weather AS
 SELECT *
-FROM weather
-JOIN calendar
-ON DATE(weather.weatherdate) = DATE(calendar.date);'''
+FROM calendar
+JOIN weather
+ON DATE(weather.weatherdate) = DATE(calendar.date)
+WHERE calendar.date >= '2022-01-01' AND calendar.date < '2022-02-01';'''
     cur.execute(query)
     con.commit()
 
