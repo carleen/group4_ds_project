@@ -135,15 +135,15 @@ def createDatabaseFile():
     
 def bulkStoreListings():
     listings_csv_list = []
-    #fnames = ['2023_q1', '2022_q4', '2022_q3', '2022_q2']
+    fnames = ['2023_q1', '2022_q4', '2022_q3', '2022_q2']
     fnames = ['2022_q3']
     for f in fnames:
         temp_listings = f'./primary/{f}/listings.csv'
         temp_reviews = f'./primary/{f}/reviews-2.csv'
         temp_calendar = f'./primary/{f}/calendar.csv'
         storeListings(temp_listings)
-        storeReviews(temp_reviews)
-        storeCalendar(temp_calendar)
+        #storeReviews(temp_reviews)
+        #storeCalendar(temp_calendar)
     weather_listing = f'./secondary/weather.csv'
     storeWeather(weather_listing)
 
@@ -272,5 +272,4 @@ if __name__ == "__main__":
     createSQLFile()
     createDatabaseFile()
     bulkStoreListings()
-    #joinWeatherCalendar()
 
