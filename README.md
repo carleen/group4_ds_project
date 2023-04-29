@@ -1,5 +1,6 @@
 # Group 4 Project Files for EN.685.648
 
+<<<<<<< HEAD
 "contents.txt" shows the folders contained within the repo. Primary AirBnB dataset can be found
 within "data/primary", and secondary data set can be found within "data/secondary".
 
@@ -12,3 +13,7 @@ Windows, and Linux, located
 Once Git LFS is installed, run `conda activate en385648` and then, in a terminal window, navigate to the data folder
 and run `python datawarehouse.py`. The .sql and .db files are also included in this repo, so it this is optional.
 
+=======
+Information to add to README file:
+- secondary data source, and how to obtain source
+>>>>>>> parent of 45b6531 (Updating with data and primary, secondary dataset folders)
