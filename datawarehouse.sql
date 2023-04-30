@@ -138,3 +138,10 @@ CREATE TABLE weather(
      text
 );
 
+-- Table: property_info
+DROP TABLE IF EXISTS property_info;
+CREATE TABLE property_info(
+    PROPTYPE text,
+    NBHDNAME text,
+    ASSESSMENT float
+);
