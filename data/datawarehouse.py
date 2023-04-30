@@ -339,10 +339,13 @@ def storePropertyInfo(csv_path):
             proptype = row[7]
             nbhdname=row[200]
             assessment = row[61]
+            
+            try:
+                nbhdname = neighborhood_mapping[nbhdname]
+            except KeyError:
+                continue
 
-    nbhdname = neighborhood_mapping[nbhdname]
-
-    cur.execute('''INSERT INTO property_info (PROPTYPE, NBHDNAME, ASSESSMENT)
+            cur.execute('''INSERT INTO property_info (PROPTYPE, NBHDNAME, ASSESSMENT)
 VALUES (?, ?, ?);''', (proptype, nbhdname, assessment))
 
     f.close()
