@@ -143,5 +143,5 @@ DROP TABLE IF EXISTS property_info;
 CREATE TABLE property_info(
     PROPTYPE text,
     NBHDNAME text,
-    ASSESSMENT integer
+    ASSESSMENT float
 );

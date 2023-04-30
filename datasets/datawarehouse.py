@@ -198,7 +198,7 @@ DROP TABLE IF EXISTS property_info;
 CREATE TABLE property_info(
     PROPTYPE text,
     NBHDNAME text,
-    ASSESSMENT integer
+    ASSESSMENT float
 );'''
     
     print('Writing datawarehouse.sql file...')
@@ -342,11 +342,11 @@ def storePropertyInfo(csv_path):
             
             try:
                 nbhdname = neighborhood_mapping[nbhdname]
+                cur.execute('''INSERT INTO property_info (PROPTYPE, NBHDNAME, ASSESSMENT)
+VALUES (?, ?, ?);''', (proptype, nbhdname, assessment))
             except KeyError:
                 continue
 
-            cur.execute('''INSERT INTO property_info (PROPTYPE, NBHDNAME, ASSESSMENT)
-VALUES (?, ?, ?);''', (proptype, nbhdname, assessment))
 
     f.close()
 
