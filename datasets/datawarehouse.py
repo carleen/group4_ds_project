@@ -215,9 +215,9 @@ def createDatabaseFile():
     con.close()
     
 def bulkStoreListings():
+    print('Writing primary dataset to datawarehouse.db...')
     listings_csv_list = []
-    #fnames = ['2023_q1', '2022_q4', '2022_q3', '2022_q2']
-    fnames = ['2022_q3']
+    fnames = ['2023_q1', '2022_q4', '2022_q3', '2022_q2']
     for f in fnames:
         temp_listings = f'./primary/{f}/listings.csv'
         temp_reviews = f'./primary/{f}/reviews-2.csv'
@@ -304,8 +304,6 @@ def storeCalendar(csv_path):
     database_path = './datawarehouse.db'
     con = sqlite3.connect(database_path)
     cur = con.cursor()
-    
-    print(csv_path)
 
     query = 'INSERT INTO calendar VALUES (?, ?, ..., ?)'
     with open(csv_path, 'r') as f:
@@ -328,6 +326,7 @@ def storeCalendar(csv_path):
     con.close()
 
 def storePropertyInfo(csv_path):
+    print('Writing secondary dataset to datawarehouse.db...')
     database_path = './datawarehouse.db'
     con = sqlite3.connect(database_path)
     cur = con.cursor()
@@ -359,4 +358,5 @@ if __name__ == "__main__":
     createDatabaseFile()
     bulkStoreListings()
     storePropertyInfo('./secondary/property_info.csv')
+    print('Complete! datawarehouse.db file successfully created.')
 
