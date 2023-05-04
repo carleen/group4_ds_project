@@ -31,6 +31,16 @@ commerical properties, and vacant properties
 `NBHDNAME` values from the secondary dataset were mapped to corresponding neighborhood groupings used in the
 primary dataset. 
 
+# Running Project Notebooks
+This project contains various Jupyter notebooks. The notebooks require Anaconda for Python 3.9. Setting up the 
+[environment](https://gist.github.com/actsasgeek/954c73d28503eb67f01d12a12b1e1181)
+created for EN.685.648 will ensure that all dependencies are installed. To run project notebooks, the script
+`./datasets/datawarehouse.py` first needs to be run, where `.` is the root project directory. This will create the following:
+- `./datasets/datawarehouse.sql`: .sql table structure containing tables and fields
+- `./datasets/datawarehouse.db`: SQLite database file containing both primary and secondary datasets
+
+Connections to the `datawarehouse.db` file are used in all of the Juptyer Notebooks.
+
 ## Project Structure
 ```bash
 .
