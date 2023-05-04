@@ -1,6 +1,7 @@
 # Group 4 Project 6 - EN.685.648
 
 ### Project Structure
+```bahs
 .
 ├── README.md
 ├── datasets
@@ -45,5 +46,4 @@
 │       └── weather2.csv
 └── eda
     └── eda.ipynb
-
-
+```bash
