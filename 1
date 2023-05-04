@@ -3,12 +3,10 @@
 ## Secondary Data Source - Property Values in Washington, D.C.
 The secondary dataset consists of property taxes and assessed home values for Washington, D.C. 
 The data were obtained from the D.C. Office of Tax and Revenue, which provides real property
-information including  size, usage, property value, assessment, and neighborhood information. 
-The usage information identifies whether the property is commericial or residential, and
-includes additional information about the properties, such as whether the properties are single-
-or multi-family homes, and the type of housing (row home, single family home, apartment, etc.). There
-are more than 200,000 properties listed in the pubically available dataset. The property tax 
-data were first released in October 2020, and are updated daily. 
+information including  size, usage, property value, assessment, and neighborhood information. There
+are more than 200,000 properties listed in the pubically available dataset.
+
+Property values were first published in October 2020, and are updated daily. 
 
 For additional details on the D.C. property tax data from the Office of Tax and Revenue, please
 visit [their website](https://otr.cfo.dc.gov/page/real-property-public-extract-records).
@@ -20,16 +18,6 @@ within `./datasets/secondary`. To download a .csv file of the original data:
 - Click the "Download" link to the left of the table
 - Download the data as a .csv file 
 
-### Fields Used In Analysis
-The analysis described in the project report utilized the following fields from the Integrated
-Tax System Public Extract Dataset:
-- `PROPTYPE`: descriptive labels for property usage, including designation of various residential property types,
-commerical properties, and vacant properties
-- `NBHDNAME`: name of the neighborhood in which the property is located
-- `ASSESSMENT`: tax-assessed value of the property
-
-`NBHDNAME` values from the secondary dataset were mapped to corresponding neighborhood groupings used in the
-primary dataset. 
 
 ## Project Structure
 ```bash
