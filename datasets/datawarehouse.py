@@ -525,12 +525,12 @@ def createCleanedCSV():
     # create mapping for shared/private and number of baths
 
     # create new column for shared/private
-    listings_df['shared_private'] = listings_df['bathrooms'].apply(lambda x: 'private' if 'private' in x.lower() else 'shared')
+    listings_df['bathroom_type'] = listings_df['bathrooms'].apply(lambda x: 'private' if 'private' in x.lower() else 'shared')
 
     # create new column for number of baths
-    listings_df['num_baths'] = listings_df['bathrooms'].apply(lambda x: bath_mapping[listings_df['shared_private'][0]].get(x, None))
+    listings_df['num_baths'] = listings_df['bathrooms'].apply(lambda x: bath_mapping[listings_df['bathroom_type'][0]].get(x, None))
 
-    listings_df['shared_private'].fillna(listings_df['shared_private'].mode()[0], inplace=True)
+    listings_df['bathroom_type'].fillna(listings_df['bathroom_type'].mode()[0], inplace=True)
     listings_df['num_baths'].fillna(listings_df['num_baths'].median(), inplace=True)
     listings_df = listings_df.drop('neighborhood', axis=1)
     listings_df['property_type'] = listings_df['property_type'].map(prop_type)
@@ -550,6 +550,8 @@ def createCleanedCSV():
     listings_df['host_response_rate'].replace('', np.median(listings_df.host_response_rate), inplace=True)
 
     listings_df['review_scores_rating'].replace('', np.mean(listings_df.review_scores_rating), inplace=True)
+
+    listings_df = listings_df.drop('bathrooms', axis=1)
     listings_df.to_csv('./airbnb_selected_variables.csv')
     
 
