@@ -225,8 +225,8 @@ def bulkStoreListings():
         storeListings(temp_listings)
         storeReviews(temp_reviews)
         storeCalendar(temp_calendar)
-    weather_listing = f'./secondary/weather.csv'
-    storeWeather(weather_listing)
+    #weather_listing = f'./secondary/weather.csv'
+    #storeWeather(weather_listing)
 
 def storeListings(csv_path):
     database_path = './datawarehouse.db'
