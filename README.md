@@ -77,25 +77,23 @@ Connections to the `datawarehouse.db` file are used in all of the Juptyer Notebo
 │   │   │   ├── neighbourhoods.csv
 │   │   │   └── reviews-2.csv
 │   │   └── airbnb_data_dict.xls
-│   └── secondary
-│       ├── DC_neighborhood_mapping.ipynb
-│       ├── DC_tax_assessed.csv
-│       ├── README.txt
-│       └── property_info.csv
+│   ├── secondary
+│   │   ├── DC_neighborhood_mapping.ipynb
+│   │   ├── DC_tax_assessed.csv
+│   │   ├── README.txt
+│   │   └── property_info.csv
+│   └── test_selected_variables.csv
 ├── eda
-│   ├── eda.ipynb
-│   └── host_response_time.ipynb
+│   └── eda.ipynb
 ├── images
+│   ├── CLD_group4.jpeg
+│   └── CLD_group4.pdf
 ├── query
 │   ├── cboyer7_query.ipynb
 │   └── queries.ipynb
 ├── regression
-│   ├── cboyer7-regression.ipynb
-│   ├── cboyer7-regression_vars.ipynb
 │   └── lferger2-model.ipynb
 └── utils
     ├── README.txt
-    ├── __pycache__
-    │   └── models.cpython-310.pyc
     └── models.py
 ```
