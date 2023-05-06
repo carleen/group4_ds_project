@@ -45,7 +45,10 @@ Connections to the `datawarehouse.db` file are used in all of the Juptyer Notebo
 ```bash
 .
 ├── README.md
+├── baseline
+│   └── baseline.ipynb
 ├── datasets
+│   ├── airbnb_selected_variables.csv
 │   ├── datawarehouse.db
 │   ├── datawarehouse.py
 │   ├── datawarehouse.sql
@@ -80,6 +83,19 @@ Connections to the `datawarehouse.db` file are used in all of the Juptyer Notebo
 │       ├── README.txt
 │       └── property_info.csv
 ├── eda
+│   ├── eda.ipynb
+│   └── host_response_time.ipynb
+├── images
+├── query
+│   ├── cboyer7_query.ipynb
+│   └── queries.ipynb
+├── regression
+│   ├── cboyer7-regression.ipynb
+│   ├── cboyer7-regression_vars.ipynb
+│   └── lferger2-model.ipynb
 └── utils
-    └── README.txt
+    ├── README.txt
+    ├── __pycache__
+    │   └── models.cpython-310.pyc
+    └── models.py
 ```
