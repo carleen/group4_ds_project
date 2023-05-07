@@ -14600,7 +14600,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 <span class="kn">import</span> <span class="nn">sqlite3</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>   
+
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14615,12 +14619,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="CoNVO">CoNVO<a class="anchor-link" href="#CoNVO">&#182;</a></h2><h3 id="Context">Context<a class="anchor-link" href="#Context">&#182;</a></h3><p>Airbnb, as “Air Bed and Breakfast”, provides an online marketplace to allow property owners to rent out their spaces for people to stay. “Inside Airbnb” collects information on properties rented and data of renting activities from Airbnb. Its goals are to give insights on Airbnb business and improve property owners and renters' experiences during their uses of Airbnb. The Chief Executive Officer makes the business decision and report to the stakeholders.</p>
-<h3 id="Need">Need<a class="anchor-link" href="#Need">&#182;</a></h3><p>Airbnb needs to improve the method to determine the listing price of a property for rent. Factors influencing the listing price need to be identified. Using the data collected by “Inside Airbnb” and other data sources, and building up a better model using these factors to predict the listing price of properties for rent, the company will generate more reasonable listing prices and this will attract more users including both property owners and renters.</p>
-<h3 id="Vision">Vision<a class="anchor-link" href="#Vision">&#182;</a></h3><p>The Chief Executive Officer will get a set of spreadsheets that contain the data categorized by property information and renting activities based on transaction history. Models using different factors to predict listing prices of properties will be generated. The best model will be selected based on the evaluation.</p>
-<h3 id="Outcome">Outcome<a class="anchor-link" href="#Outcome">&#182;</a></h3><p>Factors in the best model that predict listing prices will be focused in the future. Different aspects of these factors will be investigated and conresponding data will be collected for further exploration. A report of a discussion of factors impacting listing prices will be sent to the Chief Executive Officer and will be discussed at the next Business meeting. The results will be reported to stakeholders.</p>
-<h2 id="Question/Problem-to-Answer">Question/Problem to Answer<a class="anchor-link" href="#Question/Problem-to-Answer">&#182;</a></h2><p>What factors determine listing price of properties for rent on Airbnb?</p>
-<h2 id="Target-Variable">Target Variable<a class="anchor-link" href="#Target-Variable">&#182;</a></h2><p><strong>price</strong>: Listing price of a property for rent</p>
+<h2 id="CoNVO">CoNVO<a class="anchor-link" href="#CoNVO">&#182;</a></h2><h3 id="Context">Context<a class="anchor-link" href="#Context">&#182;</a></h3><p>Airbnb, a play on “Air Bed and Breakfast”, is a company that provides an online marketplace that allows property owners to rent out their spaces to interested individuals. “Inside Airbnb” collects information on properties rented and data related to renting activities from Airbnb. Its goals include providing insights on Airbnb businesses and ways to improve property owners and renters' experiences using the platform. The Chief Executive Officer makes the business decisions and report to the stakeholders. Since 2008, the CFO for the company has been Brian Chesky.</p>
+<h3 id="Need">Need<a class="anchor-link" href="#Need">&#182;</a></h3><p>Airbnb needs a way to improve the method of determining the listing price of a rental property. There are many factors that could and do influence potential listing prices, all of which need to be identified and explored. Using the data collected by “Inside Airbnb” as well as other data sources, and constructing a more accurate and diverse model to predict the listing price of rental properties, the company will generate more reasonable and comparable listing prices which consequently will attract more users - both property owners and eager renters.</p>
+<h3 id="Vision">Vision<a class="anchor-link" href="#Vision">&#182;</a></h3><p>The Chief Executive Officer, Brian Chesky, will receive a set of spreadsheets that contain the data categorized by property information and renting activities based on transaction history. Models using different factors to predict listing prices of properties will be generated. The best model will be selected based on the evaluation.</p>
+<h3 id="Outcome">Outcome<a class="anchor-link" href="#Outcome">&#182;</a></h3><p>Factors selected and used in the best model that predict listing prices will focus on future listings. Different aspects of these factors will be investigated, and the corresponding data will be collected and documented for further exploration. A discussion report of factors impacting listing price will be sent to the Mr. Chesky and will be discussed at the next executive board meeting. Once a decision has been made regarding recommended model, the decision as well as the subsequent results will be reported to stakeholders.</p>
+<h2 id="Question/Problem-to-Answer">Question/Problem to Answer<a class="anchor-link" href="#Question/Problem-to-Answer">&#182;</a></h2><p>The main question we aim to answer in our analysis is: <em>What factors best determine the listing price of a rental property on Airbnb?</em></p>
+<h2 id="Target-Variable">Target Variable<a class="anchor-link" href="#Target-Variable">&#182;</a></h2><p>The target variable of our analysis is <strong>Price</strong> (of rental listing).</p>
 
 </div>
 </div>
@@ -14630,7 +14634,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;./images/price_variable.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
@@ -14651,7 +14655,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 
 
 
@@ -14678,14 +14682,14 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Variables">Variables<a class="anchor-link" href="#Variables">&#182;</a></h2><p>Variables available are generally information on the price, locaton, neighborhood, host's responses, reviews and property types.</p>
-<p>"Inside AirBnB" provides access to AirBnB data from the past four quarters. The data are separated into three different .csv files:</p>
+<h2 id="Variables">Variables<a class="anchor-link" href="#Variables">&#182;</a></h2><p>Variables available contain information related to things like: price, locaton, neighborhood, host's responses, reviews and property types.</p>
+<p>"Inside AirBnB" provides access to AirBnB data from the past four quarters. The data is separated into three different .csv files:</p>
 <ul>
-<li>listings.csv: Includes detailed information about an AirBnB Listing</li>
-<li>reviews.csv: Contains review information, and <code>listing_id</code> key that maps to <code>id</code> in listings</li>
-<li>calendar.csv: Shows listing availability, mapping back to the listings.csv file using <code>listing_id</code></li>
+<li><em>listings.csv</em>: Includes detailed information about individual AirBnB Listings.</li>
+<li><em>reviews.csv</em>: Contains review information, and <code>listing_id</code> key that maps to <code>id</code> in listings.</li>
+<li><em>calendar.csv</em>: Shows listing availability, mapping back to the listings.csv file using <code>listing_id.</code></li>
 </ul>
-<p>Our analysis focused on variables contained within the listings.csv file. This file contained over 85 fields. Of these 85 fields, we identified 17 variables that we believed would affect the listing price of the AirBnb. Some of the excluded variables including host information, URLs, empty fields, large text-based entires, and redundant entires. Excluded variables are:</p>
+<p>Our analysis focused on variables contained within the <em>listings.csv</em> file. This file contained over 85 variables. Of these 85 variables, we identified 17 that we believed would affect the listing price of an Airbnb property. Some of the excluded variables included host information, URLs, empty fields, large text-based entires, and redundant entires. Excluded variables are:</p>
 <ul>
 <li>Large text or descriptive fields<ul>
 <li>name, description, neighborhood_overview, amenities, host_about</li>
@@ -14732,7 +14736,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;./images/CLD_group4.jpeg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
@@ -14753,7 +14757,7 @@ class="
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 
 
 
@@ -14780,46 +14784,46 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Here are the summary of relationships between price and individual variables:</p>
+<p>Provided below is a summary of relationships between price and the individual noted in our exploratory analysis. For a more detailed look at our exploratory data analysis, please refer to the eda.ipynb document.</p>
 <ul>
-<li><strong>bedrooms</strong>: as we saw in the EDA, there is a low positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>beds</strong>: as we saw in the EDA, there is a low positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>accommodates</strong>: as we saw in the EDA, there is a moderate positive relationship and that Spearman's suggests that the relationship may be linear.</li>
-<li><strong>host_is_superhost</strong>: as we saw in the EDA, there is a very weak relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>host_response_time</strong>: as we saw in the EDA, there is a very weak to low relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>host_response_rate</strong>: as we saw in the EDA, there is a very weak positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>host_acceptance_rate</strong>: as we saw in the EDA, there is a very weak positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>room_type</strong>: as we saw in the EDA, there is a very weak to weak relationship and that Spearman's suggests that the relationship may or may not be linear.</li>
-<li><strong>property_type</strong>: as we saw in the EDA, there is a very weak relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>number_of_reviews</strong>: as we saw in the EDA, there is a very weak negative relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>review_scores_rating</strong>: as we saw in the EDA, there is a very weak negative relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>reviews_per_month</strong>: as we saw in the EDA, there is a very weak positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>num_baths</strong>: as we saw in the EDA, there is a low positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>instant_bookable</strong>: as we saw in the EDA, there is a very weak relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>neighborhood_label</strong>: as we saw in the EDA, there is a very weak relationship and that Spearman's suggests that the relationship may not be linear.</li>
-<li><strong>bath_type</strong>: as we saw in the EDA, there is a very weak relationship and that Spearman's suggests that the relationship may not be linear.  </li>
+<li><strong>bedrooms</strong>: Low positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>beds</strong>: Low positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>accommodates</strong>: Moderate positive relationship and that Spearman's suggests that the relationship may be linear.</li>
+<li><strong>host_is_superhost</strong>: Very weak relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>host_response_time</strong>: Very weak to low relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>host_response_rate</strong>: Very weak positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>host_acceptance_rate</strong>: Very weak positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>room_type</strong>: Very weak to low relationship and that Spearman's suggests that the relationship may or may not be linear.</li>
+<li><strong>property_type</strong>: Very weak relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>number_of_reviews</strong>: Very weak negative relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>review_scores_rating</strong>: Very weak negative relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>reviews_per_month</strong>: Very weak positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>num_baths</strong>: Low positive relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>instant_bookable</strong>: Very weak relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>neighborhood_label</strong>: Very weak relationship and that Spearman's suggests that the relationship may not be linear.</li>
+<li><strong>bath_type</strong>: Very weak relationship and that Spearman's suggests that the relationship may not be linear.  </li>
 </ul>
-<h2 id="Interesting-Variables">Interesting Variables<a class="anchor-link" href="#Interesting-Variables">&#182;</a></h2><p>We explored single variable distributions and pair-wise variables for their correlations with the target variable price in our EDA. The most interesting variables are those that have at least a low correlation (Pearson's Correlation Coefficient r &gt;= 0.30) with the target variable price. They are:</p>
+<h2 id="Interesting-Variables">Interesting Variables<a class="anchor-link" href="#Interesting-Variables">&#182;</a></h2><p>We explored single variable distributions and pair-wise relationships for their correlations with the target variable, price, in our EDA. The most interesting variables are those that have at least a low correlation (Pearson's Correlation Coefficient r &gt;= 0.30) with the target variable price. These variables include:</p>
 <ul>
 <li><p><strong>bedrooms</strong>: The bedrooms variable is a numerical integer value. It represents the number of bedrooms of properties. More bedrooms generally corresponds to a higher capacity for overnight guests. 75% of AirBnB listings in the DC area contain two or fewer bedrooms. There is one AirBnB that has a maximum number of bedrooms of 15. The distribution of the number of bedrooms appears to be right-skewed. This makes sense, as one or two bedrooms may be common for most homes, with 3 or more bedrooms being less commons in homes, especially in a densely-populated area. There is a low positive relationship (r = 0.39) between bedrooms and price and that Spearman's suggests that the relationship may not be linear.</p>
 </li>
 <li><p><strong>beds</strong>: The variable beds is a numerical integer value. It represents the number of beds in the AirBnb listed property. It may correlate with bedrooms since number of bedrooms usually equals to that of beds except for rare cases. Thus, we can say about 75% of AirBnB listings in the DC area contain two or fewer beds. There is one AirBnB that has a maximum number of beds of 15.  More beds generally corresponds to a higher capacity for overnight guests. There is a low positive relationship (r = 0.42) between beds and price and that Spearman's suggests that the relationship may not be linear.</p>
 </li>
-<li><p><strong>accommodates</strong>: The accommodates variable is a numerical integer value. It represents the number of people who can stay in the AirBnb listed property. More accommodates generally corresponds to a higher capacity for overnight guests. 75% of AirBnB listings in the DC area are capable of accomodating 4 people. This unsurprisingly folows a similar pattern to both the beds and bedroom variables. The data are right-skewed. Even number accommodates values are more common, which makes sense given that one bed is often counted as accommodating 2 guests. There is a moderate positive relationship (r = 0.51) between accommodates and price and that Spearman's suggests that the relationship may be linear.</p>
+<li><p><strong>accommodates</strong>: The accommodates variable is a numerical integer value. It represents the number of people who can stay in the AirBnb listed property. More accommodates generally corresponds to a higher capacity for overnight guests. 75% of AirBnB listings in the DC area are capable of accommodating 4 people. This unsurprisingly follows a similar pattern to both the beds and bedroom variables. The data are right-skewed. Even number accommodates values are more common, which makes sense given that one bed is often counted as accommodating 2 guests. There is a moderate positive relationship (r = 0.51) between accommodates and price and that Spearman's suggests that the relationship may be linear.</p>
 </li>
 <li><p><strong>num_baths</strong>: The number of bathrooms in an AirBnB is a categorical value, since AirBnbs can have "shared" or "private" bathrooms. Additionally, there may be "half-baths" as well. The most common bathroom type for Airbnb is "1 bath". There is a low positive relationship (r = 0.47) between num_baths and price and that Spearman's suggests that the relationship may not be linear.</p>
 </li>
 </ul>
-<h2 id="The-best-variables-that-worked-out-are:">The <em>best</em> variables that worked out are:<a class="anchor-link" href="#The-best-variables-that-worked-out-are:">&#182;</a></h2><h4 id="(1)-Accommodates">(1) <strong>Accommodates</strong><a class="anchor-link" href="#(1)-Accommodates">&#182;</a></h4><h5 id="Moderate-positive-relationship-(r-=-0.51)-between-accommodates-and-price.">Moderate positive relationship (r = 0.51) between accommodates and price.<a class="anchor-link" href="#Moderate-positive-relationship-(r-=-0.51)-between-accommodates-and-price.">&#182;</a></h5>
+<h2 id="The-best-variables-that-worked-out-included:">The <em>best</em> variables that worked out included:<a class="anchor-link" href="#The-best-variables-that-worked-out-included:">&#182;</a></h2><h4 id="(1)-Accommodates">(1) <strong>Accommodates</strong><a class="anchor-link" href="#(1)-Accommodates">&#182;</a></h4><h5 id="Moderate-positive-relationship-(r-=-0.51)-between-accommodates-and-price.">Moderate positive relationship (r = 0.51) between accommodates and price.<a class="anchor-link" href="#Moderate-positive-relationship-(r-=-0.51)-between-accommodates-and-price.">&#182;</a></h5>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide_code">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;./images/accomodates_pairwise.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
@@ -14840,7 +14844,7 @@ class="
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 
 
 
@@ -14867,16 +14871,16 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="(2)-Number-of-Bathrooms">(2) <strong>Number of Bathrooms</strong><a class="anchor-link" href="#(2)-Number-of-Bathrooms">&#182;</a></h4><h5 id="Weak-to-moderate-positive-relationship-(r-=-0.47)-between-num_baths-and-price">Weak to moderate positive relationship (r = 0.47) between num_baths and price<a class="anchor-link" href="#Weak-to-moderate-positive-relationship-(r-=-0.47)-between-num_baths-and-price">&#182;</a></h5>
+<h4 id="(2)-Number-of-Bathrooms">(2) <strong>Number of Bathrooms</strong><a class="anchor-link" href="#(2)-Number-of-Bathrooms">&#182;</a></h4><h5 id="Low-to-moderate-positive-relationship-(r-=-0.47)-between-num_baths-and-price.">Low to moderate positive relationship (r = 0.47) between num_baths and price.<a class="anchor-link" href="#Low-to-moderate-positive-relationship-(r-=-0.47)-between-num_baths-and-price.">&#182;</a></h5>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide_code">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;./images/bath_table.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
@@ -14897,7 +14901,7 @@ class="
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 
 
 
@@ -14917,12 +14921,12 @@ class="
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide_code">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;./images/bathroom_pairwise.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
@@ -14943,7 +14947,7 @@ class="
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 
 
 
@@ -14973,16 +14977,16 @@ class="
 <p>&lt;/br&gt;
 For listings with private bathrooms, the prices tend to increase with more bathrooms. Listings that have shared bathrooms appear to have the same values, regardless of how many shared baths are available.</p>
 <p>&lt;/br&gt;&lt;/br&gt;</p>
-<h4 id="(3)-Number-of-Beds:">(3) <strong>Number of Beds</strong>:<a class="anchor-link" href="#(3)-Number-of-Beds:">&#182;</a></h4><h5 id="Weak-to-moderate-positive-relationship-(r-=-0.42)-between-number-of-beds-and-price.">Weak to moderate positive relationship (r = 0.42) between number of beds and price.<a class="anchor-link" href="#Weak-to-moderate-positive-relationship-(r-=-0.42)-between-number-of-beds-and-price.">&#182;</a></h5>
+<h4 id="(3)-Number-of-Beds:">(3) <strong>Number of Beds</strong>:<a class="anchor-link" href="#(3)-Number-of-Beds:">&#182;</a></h4><h5 id="Low-to-moderate-positive-relationship-(r-=-0.42)-between-number-of-beds-and-price.">Low to moderate positive relationship (r = 0.42) between number of beds and price.<a class="anchor-link" href="#Low-to-moderate-positive-relationship-(r-=-0.42)-between-number-of-beds-and-price.">&#182;</a></h5>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide_code">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;./images/beds_pairwise.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
@@ -15003,7 +15007,7 @@ For listings with private bathrooms, the prices tend to increase with more bathr
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 
 
 
@@ -15030,7 +15034,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>For additional details and to review the full single and pairwise exploratory data analysis, please refer to the eda.ipynb file.</p>
+<p>As noted above, for additional details and to review the full single and pairwise exploratory data analysis, please refer to the eda.ipynb file.</p>
 
 </div>
 </div>
@@ -15042,9 +15046,9 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Null-Model-/-Baseline-Model">Null Model / Baseline Model<a class="anchor-link" href="#Null-Model-/-Baseline-Model">&#182;</a></h2><p>In reference to our EDA, there are 8626 listings between Q2 2022- Q1 2023 in Washington D.C. The average price of these AirBnBs is 166 US dollars with a standard deviation of 130 US dollars. The mininum price for a place is 0 dollars and the max is 999 dollars. We can definitely see a skew right since the median (130) &lt; mean (166).</p>
-<p>As noted in our EDA, the distribution of this variable is skewed right and not normally distributed. It is important to understand the context of why the data is being generated like this. The data does not contains a "bell shaped curve" that is partly tied to the central limit theorem. That is, the average of the observations of this variable with finite moment and 2nd moment do not converges to the normal distribution as the number of sample increases. The data is postively skewed. That is the median of the observations is lower than the mean. There are more observations on the lower 50% percentile of the dataset than the upper 50% percentile. In this situaiton, there is no symmetry in the bell curve which violates the normality assumptions and takes us to transform the distribution we want to fit for our model. Since the data reflects the time of a pricing for a particular listing. This might be considered as the spatial time between events and it makes sense.</p>
-<h3 id="Data-Generating-Story">Data Generating Story<a class="anchor-link" href="#Data-Generating-Story">&#182;</a></h3><p>The price listing of Airbnbs varies significantly based on the demand for that specific unit. With this said, it can be noted that the demand for Airbnbs is high for Airbnbs that are cheaper and there is gradually less demand for Airbnbs that are more expensive. However, it is important to note that there is a point in the Airbnbs where the demand is as low as expensive Airbnb. That is, Airbnbs that are too cheap, people do not want to rent this Airbnb. Thus, as mentioned, because these prices are within a timeframe and are independent from each other, this distribution is most likely an exponential distribution or a family of the exponential distribution.</p>
+<h2 id="Null-Model-/-Baseline-Model">Null Model / Baseline Model<a class="anchor-link" href="#Null-Model-/-Baseline-Model">&#182;</a></h2><p>In reference to our EDA, there are 8626 listings between Q2 2022- Q1 2023 in Washington D.C. The average price of these AirBnBs is 166 US dollars with a standard deviation of 130 US dollars. The minimum price for a place is 0 dollars and the max is 999 dollars. We can assume the data is not normally distributed and may be right skewed since the median (130) is less than the mean (166).</p>
+<p>To reiterate, the distribution of <strong>price</strong> is skewed right and not normally distributed. It is important to understand the context of why the data is being generated like this. The data does not contain a "bell shaped curve" that is partly tied to the central limit theorem. That is, the average of the observations for <strong>price</strong> with finite moment and 2nd moment do not converge to the normal distribution as the number of observations increases. The data is positively skewed. That is, the median of the observations is lower than the mean. There are more observations on the lower 50% percentile of the dataset than the upper 50% percentile. In this situation, there is no symmetry in the bell curve which violates the normality assumptions and takes us to transform the distribution we want to fit for our model. Since the data reflects the time of a pricing for a particular listing. This might be considered as the spatial time between events and it makes sense.</p>
+<h3 id="Data-Generating-Story">Data Generating Story<a class="anchor-link" href="#Data-Generating-Story">&#182;</a></h3><p>The price listing of Airbnbs varies significantly based on consumer demand. With that said, it can be noted that the demand for Airbnbs is higher for cheaper rentals and lower for rentals that are more expensive (demand decreases as price increases). However, it is important to highlight that there is a point in the listings where the demand for the cheaper rentals is as low as the demand for the more expensive options. That is, Airbnbs that are too cheap, people do not want to rent. Therefore, as mentioned, listing prices are within a timeframe and are independent from each other, resulting in a distribution reflecting an exponential distribution or within the family of the exponential distribution.</p>
 
 </div>
 </div>
@@ -15056,7 +15060,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>In order to create a mean model (null model), since the data is not normally distributed, we can use Chebyshev's inequality and note that at least %75 of the data must be within 2 standard deviations from the mean (k =2). In order to do this, the following are the steps taken to create a model:</p>
+<p>In order to create a mean model (null model), since the data is not normally distributed, we can use Chebyshev's inequality and note that at least 75% of the data must be within 2 standard deviations from the mean (k =2). In order to do this, the following are the steps taken to create a model:</p>
 
 </div>
 </div>
@@ -15072,12 +15076,12 @@ class="
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_hide_code">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">db_path</span> <span class="o">=</span> <span class="s1">&#39;./datasets/datawarehouse.db&#39;</span>
@@ -15088,12 +15092,12 @@ class="
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_hide_code">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db_path</span><span class="p">)</span>
@@ -15116,12 +15120,12 @@ class="
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_hide_code">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cost_arr</span> <span class="o">=</span> <span class="p">[]</span>
@@ -15140,7 +15144,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Describes the location and scale of the data observed</span>
@@ -15195,7 +15199,7 @@ dtype: float64 )
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>It is important to note that values cannot be negative, therefore the bounds would be 0 to 428.43. This is too big of a range and not an appropiate model. We would predict that the mean listing price is 166.80 dollars. The standard deviation of the price using 75% error bounds is (-94.82, 428.43).</p>
+<p>It is important to note that values cannot be negative, therefore the bounds would be 0 to 428.43. This is too large of a range and not an appropriate model. We would predict that the mean listing price is approximately 166.80 dollars. The standard deviation of the price using 75% error bounds is (-94.82, 428.43) but changed to (0, 428.43) to reflect the fact we cannot have a negative price for a listing.</p>
 
 </div>
 </div>
@@ -15211,12 +15215,12 @@ dtype: float64 )
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_hide_code">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">airBnb_csv</span> <span class="o">=</span> <span class="s2">&quot;./datasets/airbnb_selected_variables.csv&quot;</span>
@@ -15231,12 +15235,12 @@ dtype: float64 )
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_hide_code">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">airBnB</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">airBnB</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">airBnB</span><span class="p">[</span><span class="s2">&quot;host_is_superhost&quot;</span><span class="p">],</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;superhost&quot;</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -15253,12 +15257,12 @@ dtype: float64 )
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_hide_code">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span> <span class="n">x</span><span class="p">):</span>
@@ -15285,7 +15289,7 @@ dtype: float64 )
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model4</span> <span class="o">=</span> <span class="s2">&quot;price ~ bedrooms_log + beds_log + accommodates_log + host_response_rate_log + host_acceptance_rate_log + number_of_reviews_log + review_scores_rating_log + num_baths_log + superhost_t + host_response_time_within_a_day + host_response_time_within_a_few_hours + room_type_Entire_home_apt + room_type_Private_room + property_type_apt + property_type_hotel + property_type_house + instant_bookable_t + neighborhood_high + bath_type_private + bedrooms:num_baths + bedrooms:accommodates&quot;</span>
@@ -15308,7 +15312,7 @@ dtype: float64 )
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
@@ -15317,32 +15321,32 @@ dtype: float64 )
 <tbody>
 <tr><td>                                     </td><td>                     </td><td>                     </td><td><strong>95% BCI</strong</td><td>                   </td></tr>
 <tr><td><strong>Coefficients</strong        </td><td>                     </td><td><strong>Mean</strong</td><td><strong>Lo</strong     </td><td><strong>Hi</strong</td></tr>
-<tr><td>                                     </td><td>$\beta_{0}$          </td><td>-14.80               </td><td>-44.37                  </td><td>21.87              </td></tr>
-<tr><td>bedrooms_log                         </td><td>$\beta_{1}$          </td><td>11.39                </td><td>-0.48                   </td><td>22.13              </td></tr>
-<tr><td>beds_log                             </td><td>$\beta_{2}$          </td><td>5.46                 </td><td>-1.16                   </td><td>12.70              </td></tr>
-<tr><td>accommodates_log                     </td><td>$\beta_{3}$          </td><td>27.16                </td><td>22.11                   </td><td>35.93              </td></tr>
-<tr><td>host_response_rate_log               </td><td>$\beta_{4}$          </td><td>-2.64                </td><td>-4.76                   </td><td>-0.47              </td></tr>
-<tr><td>host_acceptance_rate_log             </td><td>$\beta_{5}$          </td><td>4.65                 </td><td>2.45                    </td><td>7.25               </td></tr>
-<tr><td>number_of_reviews_log                </td><td>$\beta_{6}$          </td><td>-4.85                </td><td>-6.01                   </td><td>-3.34              </td></tr>
-<tr><td>review_scores_rating_log             </td><td>$\beta_{7}$          </td><td>-12.01               </td><td>-15.94                  </td><td>-7.92              </td></tr>
-<tr><td>num_baths_log                        </td><td>$\beta_{8}$          </td><td>116.32               </td><td>88.42                   </td><td>130.60             </td></tr>
-<tr><td>superhost_t                          </td><td>$\beta_{9}$          </td><td>16.44                </td><td>10.54                   </td><td>22.46              </td></tr>
-<tr><td>host_response_time_within_a_day      </td><td>$\beta_{10}$         </td><td>-12.36               </td><td>-21.24                  </td><td>-2.64              </td></tr>
-<tr><td>host_response_time_within_a_few_hours</td><td>$\beta_{11}$         </td><td>-31.49               </td><td>-37.33                  </td><td>-25.37             </td></tr>
-<tr><td>room_type_Entire_home_apt            </td><td>$\beta_{12}$         </td><td>84.23                </td><td>72.72                   </td><td>95.15              </td></tr>
-<tr><td>room_type_Private_room               </td><td>$\beta_{13}$         </td><td>52.24                </td><td>41.51                   </td><td>64.95              </td></tr>
-<tr><td>property_type_apt                    </td><td>$\beta_{14}$         </td><td>50.14                </td><td>19.41                   </td><td>74.09              </td></tr>
-<tr><td>property_type_hotel                  </td><td>$\beta_{15}$         </td><td>186.49               </td><td>149.47                  </td><td>222.12             </td></tr>
-<tr><td>property_type_house                  </td><td>$\beta_{16}$         </td><td>38.04                </td><td>6.11                    </td><td>63.35              </td></tr>
-<tr><td>instant_bookable_t                   </td><td>$\beta_{17}$         </td><td>8.16                 </td><td>2.68                    </td><td>11.50              </td></tr>
-<tr><td>neighborhood_high                    </td><td>$\beta_{18}$         </td><td>18.56                </td><td>13.57                   </td><td>23.16              </td></tr>
-<tr><td>bath_type_private                    </td><td>$\beta_{19}$         </td><td>9.57                 </td><td>0.45                    </td><td>18.25              </td></tr>
-<tr><td>bedrooms:num_baths                   </td><td>$\beta_{20}$         </td><td>-4.73                </td><td>-7.08                   </td><td>1.28               </td></tr>
-<tr><td>bedrooms:accommodates                </td><td>$\beta_{21}$         </td><td>2.46                 </td><td>0.94                    </td><td>3.26               </td></tr>
+<tr><td>                                     </td><td>$\beta_{0}$          </td><td>-14.80               </td><td>-51.21                  </td><td>21.33              </td></tr>
+<tr><td>bedrooms_log                         </td><td>$\beta_{1}$          </td><td>11.39                </td><td>-0.62                   </td><td>21.14              </td></tr>
+<tr><td>beds_log                             </td><td>$\beta_{2}$          </td><td>5.46                 </td><td>-0.71                   </td><td>14.72              </td></tr>
+<tr><td>accommodates_log                     </td><td>$\beta_{3}$          </td><td>27.16                </td><td>20.41                   </td><td>36.85              </td></tr>
+<tr><td>host_response_rate_log               </td><td>$\beta_{4}$          </td><td>-2.64                </td><td>-4.54                   </td><td>-0.53              </td></tr>
+<tr><td>host_acceptance_rate_log             </td><td>$\beta_{5}$          </td><td>4.65                 </td><td>2.24                    </td><td>6.72               </td></tr>
+<tr><td>number_of_reviews_log                </td><td>$\beta_{6}$          </td><td>-4.85                </td><td>-6.56                   </td><td>-3.46              </td></tr>
+<tr><td>review_scores_rating_log             </td><td>$\beta_{7}$          </td><td>-12.01               </td><td>-15.91                  </td><td>-7.50              </td></tr>
+<tr><td>num_baths_log                        </td><td>$\beta_{8}$          </td><td>116.32               </td><td>92.94                   </td><td>127.71             </td></tr>
+<tr><td>superhost_t                          </td><td>$\beta_{9}$          </td><td>16.44                </td><td>11.24                   </td><td>22.54              </td></tr>
+<tr><td>host_response_time_within_a_day      </td><td>$\beta_{10}$         </td><td>-12.36               </td><td>-20.73                  </td><td>-1.80              </td></tr>
+<tr><td>host_response_time_within_a_few_hours</td><td>$\beta_{11}$         </td><td>-31.49               </td><td>-35.88                  </td><td>-24.44             </td></tr>
+<tr><td>room_type_Entire_home_apt            </td><td>$\beta_{12}$         </td><td>84.23                </td><td>72.58                   </td><td>99.32              </td></tr>
+<tr><td>room_type_Private_room               </td><td>$\beta_{13}$         </td><td>52.24                </td><td>39.09                   </td><td>65.65              </td></tr>
+<tr><td>property_type_apt                    </td><td>$\beta_{14}$         </td><td>50.14                </td><td>16.49                   </td><td>84.74              </td></tr>
+<tr><td>property_type_hotel                  </td><td>$\beta_{15}$         </td><td>186.49               </td><td>142.65                  </td><td>225.88             </td></tr>
+<tr><td>property_type_house                  </td><td>$\beta_{16}$         </td><td>38.04                </td><td>2.64                    </td><td>73.79              </td></tr>
+<tr><td>instant_bookable_t                   </td><td>$\beta_{17}$         </td><td>8.16                 </td><td>3.40                    </td><td>14.56              </td></tr>
+<tr><td>neighborhood_high                    </td><td>$\beta_{18}$         </td><td>18.56                </td><td>13.02                   </td><td>23.93              </td></tr>
+<tr><td>bath_type_private                    </td><td>$\beta_{19}$         </td><td>9.57                 </td><td>1.65                    </td><td>18.68              </td></tr>
+<tr><td>bedrooms:num_baths                   </td><td>$\beta_{20}$         </td><td>-4.73                </td><td>-7.21                   </td><td>1.65               </td></tr>
+<tr><td>bedrooms:accommodates                </td><td>$\beta_{21}$         </td><td>2.46                 </td><td>0.92                    </td><td>3.34               </td></tr>
 <tr><td>                                     </td><td>                     </td><td>                     </td><td>                        </td><td>                   </td></tr>
 <tr><td><strong>Metrics</strong             </td><td><strong>Mean</strong</td><td><strong>Lo</strong  </td><td><strong>Hi</strong     </td><td>                   </td></tr>
-<tr><td>$\sigma$                             </td><td>102.23               </td><td>98.82                </td><td>105.82                  </td><td>                   </td></tr>
-<tr><td>$R^2$                                </td><td>0.39                 </td><td>0.37                 </td><td>0.41                    </td><td>                   </td></tr>
+<tr><td>$\sigma$                             </td><td>102.23               </td><td>98.28                </td><td>105.13                  </td><td>                   </td></tr>
+<tr><td>$R^2$                                </td><td>0.39                 </td><td>0.37                 </td><td>0.42                    </td><td>                   </td></tr>
 </tbody>
 </table></p>
 </div>
@@ -15360,35 +15364,35 @@ dtype: float64 )
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Our final model to predict listing price of a property based on differen factors is:</p>
+<p>Our final model, used to predict the listing price of a property based on different factors, is:</p>
 <p>Model: price ~ bedrooms_log + beds_log + accommodates_log + host_response_rate_log + host_acceptance_rate_log + number_of_reviews_log + review_scores_rating_log + num_baths_log + superhost_t + host_response_time_within_a_day + host_response_time_within_a_few_hours + room_type_Entire_home_apt + room_type_Private_room + property_type_apt + property_type_hotel + property_type_house + instant_bookable_t + neighborhood_high + bath_type_private + bedrooms:num_baths + bedrooms:accommodates</p>
-<p>The final linear regression model of price contains 19 variables (bedrooms_log, beds_log, accommodates_log, host_response_rate_log, host_acceptance_rate_log, number_of_reviews_log, review_scores_rating_log, num_baths_log, superhost_t, host_response_time_within_a_day, host_response_time_within_a_few_hours, room_type_Entire_home_apt, room_type_Private_room, property_type_apt, property_type_hotel, property_type_house, instant_bookable_t, neighborhood_high, and bath_type_private) and 2 interaction terms (bedrooms:num_baths and bedrooms:accommodates).</p>
-<p>The $R^2$ is 39% which is ok. All the variables in the model make sense. The error of the regression ($\sigma$) is 102.23 compared to 130.82 in th null model.</p>
-<p>What the model means:</p>
+<p>The final regression model for estimating price contains 19 variables (bedrooms_log, beds_log, accommodates_log, host_response_rate_log, host_acceptance_rate_log, number_of_reviews_log, review_scores_rating_log, num_baths_log, superhost_t, host_response_time_within_a_day, host_response_time_within_a_few_hours, room_type_Entire_home_apt, room_type_Private_room, property_type_apt, property_type_hotel, property_type_house, instant_bookable_t, neighborhood_high, and bath_type_private) and 2 interaction terms (bedrooms:num_baths and bedrooms:accommodates).</p>
+<p>The $R^2$ is 39% which is okay. All the variables in the model make sense and seem appropriate to include. The error of the regression ($\sigma$) is 102.23, compared to 130.82 in the null model, which is noticeably lower.</p>
+<p>Interpreting the results of our model:</p>
 <ul>
-<li><strong>bedrooms_log</strong> - for every unit of log bedrooms, add 11.23 from price.</li>
-<li><strong>beds_log</strong> - for every unit of log beds, add 5.46 from price. </li>
-<li><strong>accommodates_log</strong> - for every unit of log accomodates, add 27.16 from price.</li>
-<li><strong>host_response_rate_log</strong> - for every unit of log host_response_rate, subtract 2.64 from price. </li>
-<li><strong>host_acceptance_rate_log</strong> - for every unit of log host_acceptance_rate, add 4.5 from price.</li>
-<li><strong>number_of_reviews_log</strong> - for every unit of log number_of_reviews, subtract 4.85 from price.</li>
-<li><strong>review_scores_rating_log</strong> - for every unit of log review_scores_rating, subtract 12.01 from price.</li>
-<li><strong>num_baths_log</strong> - for every unit of log num_baths, add 116.32 from price.</li>
-<li><strong>superhost_t</strong> - for every unit of superhost_t, add 16.44 from price.</li>
-<li><strong>host_response_time_within_a_day</strong> - for every unit of host_response_time_within_a_day, subtract 12.36 from price.</li>
-<li><strong>host_response_time_within_a_few_hours</strong> - for every unit of host_response_time_within_a_few_hours, subtract 31.49 from price.</li>
-<li><strong>room_type_Entire_home_apt</strong> - for every unit of room_type_Entire_home_apt, add 84.23 from price.</li>
-<li><strong>room_type_Private_room</strong> - for every unit of room_type_Private_room, add 52.24 from price.</li>
-<li><strong>property_type_apt</strong> - for every unit of property_type_apt, add 50.14 from price.</li>
-<li><strong>property_type_hotel</strong> - for every unit of property_type_hotel, add 186.49 from price.</li>
-<li><strong>property_type_house</strong> - for every unit of property_type_house, add 38.04 from price.</li>
-<li><strong>instant_bookable_t</strong> - for every unit of instant_bookable_t, add 8.16 from price.</li>
-<li><strong>neighborhood_high</strong> - for every unit of neighborhood_high, add 18.56 from price.</li>
-<li><strong>bath_type_private</strong> - for every unit of bath_type_private, add 9.57 from price.</li>
-<li><strong>bedrooms:num_baths</strong> - for every unit of interacction between bedrooms and num_baths, subtract 4.73 from price.</li>
-<li><strong>bedrooms:accommodates</strong> - for every unit of interacction between bedrooms and accomodates, add 2.46 from price.</li>
+<li><strong>bedrooms_log</strong> - for every one additional unit of log bedrooms, add 11.23 to price, holding all else equal.</li>
+<li><strong>beds_log</strong> - for every one additional unit of log beds, add 5.46 to price, holding all else equal. </li>
+<li><strong>accommodates_log</strong> - for every one additional unit of log accommodates, add 27.16 to price, holding all else equal.</li>
+<li><strong>host_response_rate_log</strong> - for every one additional unit of log host_response_rate, subtract 2.64 from price, holding all else equal. </li>
+<li><strong>host_acceptance_rate_log</strong> - for every one additional unit of log host_acceptance_rate, add 4.5 to price, holding all else equal.</li>
+<li><strong>number_of_reviews_log</strong> - for every one additional unit of log number_of_reviews, subtract 4.85 from price, holding all else equal.</li>
+<li><strong>review_scores_rating_log</strong> - for every one additional unit of log review_scores_rating, subtract 12.01 from price, holding all else equal.</li>
+<li><strong>num_baths_log</strong> - for every one additional unit of log num_baths, add 116.32 to price, holding all else equal.</li>
+<li><strong>superhost_t</strong> - for every one additional unit of superhost_t, add 16.44 to price, holding all else equal.</li>
+<li><strong>host_response_time_within_a_day</strong> - for every one additional unit of host_response_time_within_a_day, subtract 12.36 from price, holding all else equal.</li>
+<li><strong>host_response_time_within_a_few_hours</strong> - for every one additional unit of host_response_time_within_a_few_hours, subtract 31.49 from price, holding all else equal.</li>
+<li><strong>room_type_Entire_home_apt</strong> - for every one additional unit of room_type_Entire_home_apt, add 84.23 to price, holding all else equal.</li>
+<li><strong>room_type_Private_room</strong> - for every one additional unit of room_type_Private_room, add 52.24 to price, holding all else equal.</li>
+<li><strong>property_type_apt</strong> - for every one additional unit of property_type_apt, add 50.14 to price, holding all else equal.</li>
+<li><strong>property_type_hotel</strong> - for every one additional unit of property_type_hotel, add 186.49 to price, holding all else equal.</li>
+<li><strong>property_type_house</strong> - for every one additional unit of property_type_house, add 38.04 to price, holding all else equal.</li>
+<li><strong>instant_bookable_t</strong> - for every one additional unit of instant_bookable_t, add 8.16 to price, holding all else equal.</li>
+<li><strong>neighborhood_high</strong> - for every one additional unit of neighborhood_high, add 18.56 to price, holding all else equal .</li>
+<li><strong>bath_type_private</strong> - for every one additional unit of bath_type_private, add 9.57 to price, holding all else equal.</li>
+<li><strong>bedrooms:num_baths</strong> - for every one additional unit of interaction between bedrooms and num_baths, subtract 4.73 from price, holding all else equal.</li>
+<li><strong>bedrooms:accommodates</strong> - for every one additional unit of interaction between bedrooms and accommodates, add 2.46 to price, holding all else equal.</li>
 </ul>
-<p>From the null model, we know the $\sigma$ of this particular model was 130.82. The $\sigma$ for the model we came up with is 102.23. That is a significant improvement while keeping a $R^2$ of .39.</p>
+<p>From the null model, we know the $\sigma$ of this particular model was 130.82. The $\sigma$ for the final model we developed is 102.23. That is a noticeable improvement while keeping a $R^2$ of 0.39.</p>
 
 </div>
 </div>
@@ -15411,7 +15415,7 @@ dtype: float64 )
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Prediction-1">Prediction 1<a class="anchor-link" href="#Prediction-1">&#182;</a></h3><p>In order to create predictions from the model, we must create a vector that simulates the circumstance for which we would want to predict the price. That is, if we want the price for a place that has:</p>
+<h3 id="Prediction-1">Prediction 1<a class="anchor-link" href="#Prediction-1">&#182;</a></h3><p>In order to create predictions from the model, we must create a vector that simulates the circumstances for which we would want to predict the price. That is, if we want the price for a place that has:</p>
 <ol>
 <li>Skip (1 is inserted for the intercept)</li>
 <li>2 bedrooms</li>
@@ -15445,7 +15449,7 @@ dtype: float64 )
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">prediction</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">88</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mf">4.8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
@@ -15487,7 +15491,8 @@ dtype: float64 )
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>We get an Airbnb that should cost around \$272.68 dollars. Let's try another circumstance:</p>
+<p>We get an Airbnb that should cost around \$272.68 dollars.</p>
+<p>Let's try another example:</p>
 <ol>
 <li>Skip (1 is inserted for the intercept)</li>
 <li>1 bedroom</li>
@@ -15521,7 +15526,7 @@ dtype: float64 )
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">prediction2</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">88</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mf">4.8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
@@ -15563,7 +15568,8 @@ dtype: float64 )
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>We get an Airbnb that should cost around \$338.04. Let's try another circumstance:</p>
+<p>We get an Airbnb listing that should cost around \$338.04.</p>
+<p>Let's try one more:</p>
 <ol>
 <li>Skip (1 is inserted for the intercept)</li>
 <li>1 bedrooms</li>
@@ -15597,7 +15603,7 @@ dtype: float64 )
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">prediction3</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">88</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mf">4.8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
@@ -15640,7 +15646,7 @@ dtype: float64 )
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>We get an Airbnb that should cost around \$282.32.</p>
-<p>The predictions seems to be appropriate. Therefore, our model seems acceptable to use as a means to predict rental listings.</p>
+<p>The predictions seems to be appropriate. Therefore, our model seems acceptable to move forward and use more in the exploration to predict rental listings.</p>
 
 </div>
 </div>
