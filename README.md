@@ -38,6 +38,7 @@ created for EN.685.648 will ensure that all dependencies are installed. To run p
 `./datasets/datawarehouse.py` first needs to be run, where `.` is the root project directory. This will create the following:
 - `./datasets/datawarehouse.sql`: .sql table structure containing tables and fields
 - `./datasets/datawarehouse.db`: SQLite database file containing both primary and secondary datasets
+- `./datasets/airbnb_selected_variables.csv`: CSV file containing the variables used in the EDA steps
 
 Connections to the `datawarehouse.db` file are used in all of the Juptyer Notebooks.
 
@@ -77,22 +78,28 @@ Connections to the `datawarehouse.db` file are used in all of the Juptyer Notebo
 │   │   │   ├── neighbourhoods.csv
 │   │   │   └── reviews-2.csv
 │   │   └── airbnb_data_dict.xls
-│   ├── secondary
-│   │   ├── DC_neighborhood_mapping.ipynb
-│   │   ├── DC_tax_assessed.csv
-│   │   ├── README.txt
-│   │   └── property_info.csv
-│   └── test_selected_variables.csv
+│   └── secondary
+│       ├── DC_neighborhood_mapping.ipynb
+│       ├── DC_tax_assessed.csv
+│       ├── README.txt
+│       └── property_info.csv
 ├── eda
 │   └── eda.ipynb
 ├── images
 │   ├── CLD_group4.jpeg
-│   └── CLD_group4.pdf
+│   ├── CLD_group4.pdf
+│   ├── accomodates_pairwise.png
+│   ├── bath_table.png
+│   ├── bathroom_pairwise.png
+│   ├── beds_pairwise.png
+│   ├── final_model.png
+│   └── price_variable.png
 ├── query
-│   ├── cboyer7_query.ipynb
 │   └── queries.ipynb
 ├── regression
-│   └── lferger2-model.ipynb
+│   └── regression.ipynb
+├── report.html
+├── report.ipynb
 └── utils
     ├── README.txt
     └── models.py
